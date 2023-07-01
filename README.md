@@ -1,4 +1,4 @@
-# Phase 4, Lecture 6: Client-Server Communication
+# Phase-4-thrifter 
 
 ## Setup
 

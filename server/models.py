@@ -24,5 +24,13 @@ class Item(db.Model):
 class User(db.Model):
     __tablename__ = 'users'
     user_id = db.Column(db.Integer, primary_key=True)
+    user_name = db.Column(db.String)
+
+
+class Order(db.Model):
+    __tablename__ = 'orders'
+    sale_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    item_id = db.Column(db.Integer, db.ForeignKey('items.item_id'))
 
     
