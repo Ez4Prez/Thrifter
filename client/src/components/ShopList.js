@@ -6,7 +6,7 @@ function ShopList ({items, addToCart}) {
         
         <>
             <ul className="shop-list">{items.map(item => {
-                return <ShopItem key={item.id} item={item} addToCart={addToCart} />;
+                return <ShopItem key={item.item_id} item={item} addToCart={addToCart} />;
             })}
             </ul> 
         </>

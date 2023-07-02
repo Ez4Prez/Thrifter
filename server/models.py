@@ -21,6 +21,18 @@ class Item(db.Model):
     item_condition = db.Column(db.Text)
     item_favorite = db.Column(db.Text)
 
+    def to_dict(self):
+        return {
+            'item_id': self.item_id,
+            'item_brand': self.item_brand,
+            'item_description': self.item_description,
+            'item_img': self.item_img,
+            'item_price': self.item_price,
+            'item_size': self.item_size,
+            'item_condition': self.item_condition,
+            'item_favorite': self.item_favorite
+        }
+
 class User(db.Model):
     __tablename__ = 'users'
     user_id = db.Column(db.Integer, primary_key=True)

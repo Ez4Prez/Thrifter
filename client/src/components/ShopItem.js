@@ -15,11 +15,11 @@ function ShopItem({item, addToCart}){
     // })
     return (
         <li className="shop-item">
-            <img src={item.image} alt={"Item Name"} />
-            <h3 className="shop-brand">{item.brand}</h3>
-            <h4 className="shop-description">{item.description}</h4>
-            <h4 className="shop-price">${item.price}</h4>
-            <h4 className="shop-size">Size: {item.size}</h4>
+            <img src={item.item_img} alt={"Item Name"} />
+            <h3 className="shop-brand">{item.item_brand}</h3>
+            <h4 className="shop-description">{item.item_description}</h4>
+            <h4 className="shop-price">${item.item_price}</h4>
+            <h4 className="shop-size">Size: {item.item_size}</h4>
             <button class="btn btn-dark" onClick={() => {
                 addToCart(item)
                 toggleAddToCart()

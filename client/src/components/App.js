@@ -21,7 +21,7 @@ const [formInput, setFormInput] = useState({
 
 
 useEffect(() => {
-  fetch("http://localhost:3000/items")
+  fetch("http://127.0.0.1:7000/items")
   .then(resp => resp.json())
   .then(itemsData => setItems(itemsData))
 },[])
@@ -29,11 +29,11 @@ useEffect(() => {
 
 function submitItem(event){
   event.preventDefault()
-  fetch("http://localhost:3000/items",{
+  fetch("http://127.0.0.1:7000/items",{
     method: "POST",
     headers: {
-      "content-type": "application/json",
-      "accept": "application/json"
+      "Content-Type": "application/json",
+      "Accept": "application/json"
     },
     body: JSON.stringify(formInput)
   })
@@ -76,7 +76,7 @@ function updateFormData(event){
           <SellItemForm updateFormData={updateFormData} submitItem={submitItem} />
         </Route>
         <Route exact path="/">
-          <ShopList addToCart={addToCart} key={items.id} items={items} />
+          <ShopList addToCart={addToCart} items={items} />
         </Route>
       </Switch>
 
