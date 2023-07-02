@@ -21,6 +21,8 @@ class Item(db.Model):
     item_condition = db.Column(db.Text)
     item_favorite = db.Column(db.Text)
 
+    orders = db.relationship('Order', backref="item", lazy=True)
+
     def to_dict(self):
         return {
             'item_id': self.item_id,
@@ -38,11 +40,26 @@ class User(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String)
 
+    orders = db.relationship('Order', backref="user", lazy=True)
+
+    def to_dict(self):
+        return {
+            'user_id': self.user_id,
+            'user_name': self.user_name
+        }
+
 
 class Order(db.Model):
     __tablename__ = 'orders'
-    sale_id = db.Column(db.Integer, primary_key=True)
+    order_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     item_id = db.Column(db.Integer, db.ForeignKey('items.item_id'))
+
+    def to_dict(self):
+        return {
+            'order_id': self.order_id,
+            'user_id': self.user_id,
+            'item_id': self.item_id
+        }
 
     

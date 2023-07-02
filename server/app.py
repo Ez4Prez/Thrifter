@@ -133,179 +133,179 @@ class ItemById(Resource):
 
 api.add_resource(ItemById, '/items/<int:id>')
 
-# class Orders(Resource):
+class OrdersResource(Resource):
 
-#     def get(self):
-#         orders = Order.query.all()
+    def get(self):
+        orders = Order.query.all()
 
-#         response_body = []
-#         for order in orders:
-#             response_body.append(order.to_dict())
+        response_body = []
+        for order in orders:
+            response_body.append(order.to_dict())
         
-#         return make_response(jsonify(response_body), 200)
+        return make_response(jsonify(response_body), 200)
     
-#     def post(self):
-#         try:
-#             new_order = Order(user_id=request.get_json().get('user_id'), item_id=request.get_json().get('item_id'))
+    def post(self):
+        try:
+            new_order = Order(user_id=request.get_json().get('user_id'), item_id=request.get_json().get('item_id'))
 
-#             db.session.add(new_order)
-#             db.session.commit()
+            db.session.add(new_order)
+            db.session.commit()
             
-#             return make_response(jsonify(new_order.to_dict()), 201)
-#         except ValueError as error:
-#             response_body = {
-#                 "error": error.args
-#             }
-#             return make_response(jsonify(response_body), 422)
+            return make_response(jsonify(new_order.to_dict()), 201)
+        except ValueError as error:
+            response_body = {
+                "error": error.args
+            }
+            return make_response(jsonify(response_body), 422)
 
-# api.add_resource(Order, '/orders')
+api.add_resource(OrdersResource, '/orders')
 
-# class OrderById(Resource):
+class OrderById(Resource):
 
-#     def get(self, id):
-#         order = Order.query.filter(Order.id == id).first()
+    def get(self, id):
+        order = Order.query.filter(Order.id == id).first()
 
-#         if not order:
-#             response_body = {
-#                 "error": "Customer not found"
-#             }
-#             status = 404
-#         else:
-#             response_body = order.to_dict()
-#             status = 200
+        if not order:
+            response_body = {
+                "error": "Customer not found"
+            }
+            status = 404
+        else:
+            response_body = order.to_dict()
+            status = 200
 
-#         return make_response(jsonify(response_body), status)
+        return make_response(jsonify(response_body), status)
     
-#     def patch(self, id):
-#         order = Order.query.filter(Order.id == id).first()
+    def patch(self, id):
+        order = Order.query.filter(Order.id == id).first()
 
-#         if not order:
-#             response_body = {
-#                 "error": "Customer not found"
-#             }
-#             return make_response(jsonify(response_body), 404)
-#         else:
-#             try:
-#                 json_data = request.get_json()
+        if not order:
+            response_body = {
+                "error": "Customer not found"
+            }
+            return make_response(jsonify(response_body), 404)
+        else:
+            try:
+                json_data = request.get_json()
                 
-#                 for key in json_data:
-#                     setattr(order, key, json_data.get(key))
+                for key in json_data:
+                    setattr(order, key, json_data.get(key))
 
-#                 db.session.commit()
+                db.session.commit()
 
-#                 response_body = order.to_dict()
+                response_body = order.to_dict()
 
-#                 return make_response(jsonify(response_body), 200)
-#             except ValueError as error:
-#                 response_body = {
-#                     "error": error.args
-#                 }
-#                 return make_response(jsonify(response_body), 422)
+                return make_response(jsonify(response_body), 200)
+            except ValueError as error:
+                response_body = {
+                    "error": error.args
+                }
+                return make_response(jsonify(response_body), 422)
     
-#     def delete(self, id):
-#         order = Order.query.filter(Order.id == id).first()
+    def delete(self, id):
+        order = Order.query.filter(Order.id == id).first()
         
-#         if not order:
+        if not order:
 
-#             response_body = {
-#                 "error": "Order not found"
-#             }
-#             status = 404
+            response_body = {
+                "error": "Order not found"
+            }
+            status = 404
         
-#         else:
+        else:
             
-#             db.session.delete(order)
-#             db.session.commit()
+            db.session.delete(order)
+            db.session.commit()
 
-#             response_body = {}
-#             status = 204
+            response_body = {}
+            status = 204
 
-#         return make_response(jsonify(response_body), status)
+        return make_response(jsonify(response_body), status)
 
-# api.add_resource(OrderById, '/orders/<int:id>')
+api.add_resource(OrderById, '/orders/<int:id>')
 
-# class Users(Resource):
+class Users(Resource):
 
-#     def get(self):
-#         users = User.query.all()
+    def get(self):
+        users = User.query.all()
 
-#         response_body = []
+        response_body = []
 
-#         for user in users:
-#             response_body.append(user.to_dict())
+        for user in users:
+            response_body.append(user.to_dict())
 
-#         return make_response(jsonify(response_body), 200)
+        return make_response(jsonify(response_body), 200)
     
-#     def post(self):
-#         json_data = request.get_json()
-#         new_user = User(user_name=json_data.get('user_name'))
-#         db.session.add(new_user)
-#         db.session.commit()
+    def post(self):
+        json_data = request.get_json()
+        new_user = User(user_name=json_data.get('user_name'))
+        db.session.add(new_user)
+        db.session.commit()
 
-#         response_body = new_user.to_dict()
+        response_body = new_user.to_dict()
         
-#         return make_response(jsonify(response_body), 201)
+        return make_response(jsonify(response_body), 201)
     
-# api.add_resource(Users, '/users')
+api.add_resource(Users, '/users')
 
-# class UserById(Resource):
+class UserById(Resource):
 
-#     def get(self, id):
-#         user = User.query.filter(User.id == id).first()
+    def get(self, id):
+        user = User.query.filter(User.id == id).first()
 
-#         if not user:
-#             response_body = {
-#                 "error": "User not found"
-#             }
-#             status = 404
-#         else:
-#             response_body = user.to_dict()
-#             status = 200
+        if not user:
+            response_body = {
+                "error": "User not found"
+            }
+            status = 404
+        else:
+            response_body = user.to_dict()
+            status = 200
 
-#         return make_response(jsonify(response_body), status)
+        return make_response(jsonify(response_body), status)
     
-#     def patch(self, id):
-#         user = User.query.filter(User.id == id).first()
+    def patch(self, id):
+        user = User.query.filter(User.id == id).first()
 
-#         if not user:
-#             response_body = {
-#                 "error": "User not found"
-#             }
-#             status = 404
-#         else:
-#             json_data = request.get_json()
+        if not user:
+            response_body = {
+                "error": "User not found"
+            }
+            status = 404
+        else:
+            json_data = request.get_json()
 
-#             for key in json_data:
-#                 setattr(user, key, json_data.get(key))
+            for key in json_data:
+                setattr(user, key, json_data.get(key))
 
-#             db.session.commit()
+            db.session.commit()
 
-#             response_body = user.to_dict()
-#             status = 200
+            response_body = user.to_dict()
+            status = 200
 
-#         return make_response(jsonify(response_body), status)
+        return make_response(jsonify(response_body), status)
     
-#     def delete(self, id):
-#         review = User.query.filter(User.id == id).first()
+    def delete(self, id):
+        review = User.query.filter(User.id == id).first()
         
-#         if not review:
+        if not review:
 
-#             response_body = {
-#                 "error": "Review not found"
-#             }
-#             status = 404
+            response_body = {
+                "error": "Review not found"
+            }
+            status = 404
         
-#         else:
+        else:
             
-#             db.session.delete(review)
-#             db.session.commit()
+            db.session.delete(review)
+            db.session.commit()
 
-#             response_body = {}
-#             status = 204
+            response_body = {}
+            status = 204
 
-#         return make_response(jsonify(response_body), status)
+        return make_response(jsonify(response_body), status)
 
-# api.add_resource(UserById, '/users/<int:id>')
+api.add_resource(UserById, '/users/<int:id>')
 
 if __name__ == '__main__':
     app.run(port=7000, debug=True)

@@ -10,7 +10,7 @@ function Cart ({cart, removeFromCart}){
     }
 
     const priceArray = cart.map(cartItem => {
-        return Number(cartItem.price) 
+        return Number(cartItem.item_price) 
     })
    
     let sum = 0
