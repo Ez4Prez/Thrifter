@@ -43,7 +43,8 @@ class Items(Resource):
                 item_img=request.get_json().get('image'),
                 item_price=request.get_json().get('price'),
                 item_size=request.get_json().get('size'),
-                item_condition=request.get_json().get('condition')
+                item_condition=request.get_json().get('condition'),
+                item_likes=0
                 )
             db.session.add(new_item)
             db.session.commit()
@@ -63,7 +64,7 @@ api.add_resource(Items, '/items')
 class ItemById(Resource):
 
     def get(self, id):
-        item = Item.query.filter(Item.id == id).first()
+        item = Item.query.filter(Item.item_id == id).first()
 
         if not item:
             response_body = {
@@ -86,8 +87,8 @@ class ItemById(Resource):
         return make_response(jsonify(response_body), status)
     
     def patch(self, id):
-        item = Item.query.filter(Item.id == id).first()
-
+        item = Item.query.filter(Item.item_id == id).first()
+        print(item)
         if not item:
             response_body = {
                 "error": "Item not found"
@@ -113,7 +114,7 @@ class ItemById(Resource):
                 return make_response(jsonify(response_body), 422)
     
     def delete(self, id):
-        item = Item.query.filter(Item.id == id).first()
+        item = Item.query.filter(Item.item_id == id).first()
 
         if not item:
             response_body = {

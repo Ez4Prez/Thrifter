@@ -19,6 +19,7 @@ with app.app_context():
         item_size="L",
         item_condition="Worn",
         item_favorite="False",
+        item_likes="41"
         ))
     items.append(Item(
         item_brand="Maharishi", 
@@ -28,6 +29,7 @@ with app.app_context():
         item_size="S",
         item_condition="Never worn",
         item_favorite="False",
+        item_likes="352"
         ))
     items.append(Item(
         item_brand="Human Made", 
@@ -37,6 +39,7 @@ with app.app_context():
         item_size="M",
         item_condition="Worn 1-2 times",
         item_favorite="False",
+        item_likes="6"
         ))
     items.append(Item(
         item_brand="Ralph Lauren", 
@@ -46,6 +49,7 @@ with app.app_context():
         item_size="L",
         item_condition="Worn",
         item_favorite="False",
+        item_likes="33"
         ))
     items.append(Item(
         item_brand="Palm Angels", 
@@ -55,6 +59,7 @@ with app.app_context():
         item_size="Fits All",
         item_condition="Worn 1-2 times",
         item_favorite="False",
+        item_likes="3"
         ))
     items.append(Item(
         item_brand="Vans", 
@@ -64,6 +69,7 @@ with app.app_context():
         item_size="10",
         item_condition="Worn",
         item_favorite="False",
+        item_likes="13"
         ))
     items.append(Item(
         item_brand="Sandro", 
@@ -73,6 +79,7 @@ with app.app_context():
         item_size="M",
         item_condition="Badly Worn",
         item_favorite="False",
+        item_likes="63"
         ))
     items.append(Item(
         item_brand="Off White", 
@@ -82,6 +89,7 @@ with app.app_context():
         item_size="Fits All",
         item_condition="Worn 1-2 times",
         item_favorite="False",
+        item_likes="53"
         ))
     items.append(Item(
         item_brand="Stussy", 
@@ -91,6 +99,7 @@ with app.app_context():
         item_size="Fits All",
         item_condition="Worn",
         item_favorite="False",
+        item_likes="1"
         ))
     items.append(Item(
         item_brand="All Saints", 
@@ -100,6 +109,7 @@ with app.app_context():
         item_size="S",
         item_condition="New",
         item_favorite="False",
+        item_likes="3"
         ))
     items.append(Item(
         item_brand="Daily Paper", 
@@ -118,6 +128,7 @@ with app.app_context():
         item_size="Fits All",
         item_condition="New",
         item_favorite="False",
+        item_likes="32"
         ))
     items.append(Item(
         item_brand="Botega", 
@@ -127,6 +138,7 @@ with app.app_context():
         item_size="9",
         item_condition="Worn",
         item_favorite="False",
+        item_likes="63"
         ))
     
     

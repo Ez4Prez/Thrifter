@@ -20,6 +20,7 @@ class Item(db.Model):
     item_size = db.Column(db.Text)
     item_condition = db.Column(db.Text)
     item_favorite = db.Column(db.Text)
+    item_likes = db.Column(db.Integer)
 
     def to_dict(self):
         return {
@@ -30,7 +31,8 @@ class Item(db.Model):
             'item_price': self.item_price,
             'item_size': self.item_size,
             'item_condition': self.item_condition,
-            'item_favorite': self.item_favorite
+            'item_favorite': self.item_favorite,
+            'item_likes': self.item_likes
         }
 
 class User(db.Model):

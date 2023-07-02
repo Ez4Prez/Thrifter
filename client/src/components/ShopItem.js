@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
+import LikeButton from './LikeButton';
 
 
-function ShopItem({item, addToCart}){
+function ShopItem({item, addToCart, setLikeItem, patchItemLike}){
     
     const [inCart, setInCart] = useState(false)
 
@@ -13,6 +14,7 @@ function ShopItem({item, addToCart}){
     //     item.id += 1
     //     return item.id
     // })
+
     return (
         <li className="shop-item">
             <img src={item.item_img} alt={"Item Name"} />
@@ -23,7 +25,8 @@ function ShopItem({item, addToCart}){
             <button class="btn btn-dark" onClick={() => {
                 addToCart(item)
                 toggleAddToCart()
-            }} >{inCart ? "In Cart" : "Add to Cart"}</button>
+            }} >{inCart ? "In Cart" : "Add to Cart"}</button> 
+            <LikeButton item={item} setLikeItem={setLikeItem} patchItemLike={patchItemLike}/>
 
         </li>
     )

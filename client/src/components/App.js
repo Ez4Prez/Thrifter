@@ -11,6 +11,7 @@ function App() {
 
 const [items, setItems] = useState([])
 const [cart, setCart] = useState([])
+const [likeItem, setLikeItem] = useState(null)
 const [formInput, setFormInput] = useState({
   brand: "",
   description: "",
@@ -41,13 +42,30 @@ function submitItem(event){
     .then(newItem => setItems([...items, newItem]))
 }
 
+function patchItemLike(event, item){
+  event.preventDefault()
+  console.log(item)
+  item.item_likes +=1
+
+  fetch("http://127.0.0.1:7000/items/" + item.item_id,{
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(item)
+  })
+    .then(resp => resp.json())
+  
+}
+
 function addToCart(item) {
   setCart([...cart, item])
 }
 
 function removeFromCart(id) { 
  setCart(cart.filter(cartItem => {
-  return cartItem.id !== id
+  return cartItem.item_id !== id
  }))
 }
 
@@ -76,7 +94,7 @@ function updateFormData(event){
           <SellItemForm updateFormData={updateFormData} submitItem={submitItem} />
         </Route>
         <Route exact path="/">
-          <ShopList addToCart={addToCart} items={items} />
+          <ShopList addToCart={addToCart} items={items} setLikeItem={setLikeItem} patchItemLike={patchItemLike}/>
         </Route>
       </Switch>
 
