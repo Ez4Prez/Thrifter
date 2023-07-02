@@ -6,12 +6,14 @@ import About from './About'
 
 import {useState, useEffect} from 'react'
 import {Route, Switch} from 'react-router-dom';
+import LogIn from './LogIn'
 
 function App() {
 
 const [items, setItems] = useState([])
 const [cart, setCart] = useState([])
 const [likeItem, setLikeItem] = useState(null)
+const [loggedIn, setLoggedIn] = useState(false)
 const [formInput, setFormInput] = useState({
   brand: "",
   description: "",
@@ -82,7 +84,7 @@ function updateFormData(event){
 
   return (
     <div className="App">
-      <NavBar />
+      {loggedIn ? <NavBar /> : null}
       <Switch>
         <Route path="/about">
           <About />
@@ -94,7 +96,8 @@ function updateFormData(event){
           <SellItemForm updateFormData={updateFormData} submitItem={submitItem} />
         </Route>
         <Route exact path="/">
-          <ShopList addToCart={addToCart} items={items} setLikeItem={setLikeItem} patchItemLike={patchItemLike}/>
+         {loggedIn ? <ShopList addToCart={addToCart} items={items} setLikeItem={setLikeItem} patchItemLike={patchItemLike}/>
+         : <LogIn setLoggedIn = {setLoggedIn} loggedIn = {loggedIn} />}
         </Route>
       </Switch>
 
