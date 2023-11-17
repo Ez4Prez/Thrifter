@@ -11,6 +11,7 @@ function App() {
 
 const [items, setItems] = useState([])
 const [cart, setCart] = useState([])
+const [searchText, setSearchText] = useState("")
 const [formInput, setFormInput] = useState({
   brand: "",
   description: "",
@@ -47,7 +48,7 @@ function addToCart(item) {
 
 function removeFromCart(id) { 
  setCart(cart.filter(cartItem => {
-  return cartItem.id !== id
+  return cartItem.item_id !== id
  }))
 }
 
@@ -58,13 +59,23 @@ function updateFormData(event){
   else (setFormInput({...formInput, [event.target.name]: event.target.value}))
 }
 
+function updateSearchText(event){
+  setSearchText(event.target.value)
+}
 
+
+const filteredItems = items.filter((item) => {
+  if (searchText === ""){
+    return true
+  }
+  return item.item_brand.toLowerCase().includes(searchText.toLowerCase()) || item.item_description.toLowerCase().includes(searchText.toLowerCase())
+})
 
 
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar updateSearchText={updateSearchText} />
       <Switch>
         <Route path="/about">
           <About />
@@ -76,7 +87,7 @@ function updateFormData(event){
           <SellItemForm updateFormData={updateFormData} submitItem={submitItem} />
         </Route>
         <Route exact path="/">
-          <ShopList addToCart={addToCart} items={items} />
+          <ShopList addToCart={addToCart} items={filteredItems} />
         </Route>
       </Switch>
 

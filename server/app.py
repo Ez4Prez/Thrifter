@@ -86,7 +86,7 @@ class ItemById(Resource):
         return make_response(jsonify(response_body), status)
     
     def patch(self, id):
-        item = Item.query.filter(Item.id == id).first()
+        item = Item.query.filter(Item.item_id == id).first()
 
         if not item:
             response_body = {

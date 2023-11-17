@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom"
 
-function NavBar(){
+function NavBar({updateSearchText}){
 
 return (
     <>
@@ -15,6 +15,7 @@ return (
                 type="text"
                 id="search"
                 placeholder="Search..."
+                onChange={updateSearchText}
                 
             />
         </div>
