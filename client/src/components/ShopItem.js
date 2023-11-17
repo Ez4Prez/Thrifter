@@ -51,7 +51,7 @@ function ShopItem({ item, addToCart }) {
         <h4 className="shop-description">{item.item_description}</h4>
         <h4 className="shop-price">${item.item_price}</h4>
         <h4 className="shop-size">Size: {item.item_size}</h4>
-        <h4 className="shop-condition">{item.item_condition}</h4>
+        <h4 className="shop-condition">Condition:{item.item_condition}</h4>
         <div className="list-btn-wrap">
           <button id="add2cart-btn" className="btn" onClick={() => {
             addToCart(item)
