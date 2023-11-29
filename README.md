@@ -1,17 +1,14 @@
-# Phase-4-thrifter 
+# Welcome To Thrifter
+
+<img src="./client/public/thrifter-SC1.jpg" alt="app-img" width="550"/>
+
+[View live demo](https://www.loom.com/share/1929a9b14b9e45e2ae4466d23d98a256?sid=1bc5230b-3fe9-4612-ab87-5091b54d9ed6)
+
+## Description
+
+ Not just your regular e-commerce clothing site, Thrifter is a contemporary online thrift shop, bringing together high-fashion garments with sustainability. Users are able to both buy and sell quality pieces (and soon donate as well), through a sustainable platform that houses a curated selection of used clothing. Built using React, and Python with Flask, Thrifter is a Full-Stack Web Application built to be a one-stop shop for fashionistas on a budget and swaggy environmentalists.
+
 
 ## Setup
 
-1. Fork and then Clone this repository.
-
-2. Make sure that you are in the correct directory (folder) that contains a `Pipfile`, then run `pipenv install` in your terminal to install the required Python libraries.
-
-3. Now that your `pipenv` virtual environment is ready to use, enter `pipenv shell` to enter the virtual environment.
-
-4. Run `npm install --prefix client` in your terminal to install the dependencies for the React app.
-
-5. Enter the command `cd server` in the terminal to move into the server directory.
-
-6. Enter the command `python app.py` in the terminal to run the Flask app (make sure that you are in the `server` directory before running this terminal command).
-
-7. In a new terminal, run `npm start --prefix client` in your terminal to run the React app in the browser. If your browser does not automatically open the page for you, open [http://localhost:4000](http://localhost:4000) to view it in your browser.
+To get started fork and clone this repository to your local machine. Then from your terminal navigate into the projects root directory and 'cd' into 'server' and run the following command: 'python app.py' . This should begin our server-side app. Now open up a separate terminal and from the projects root directory run the command: 'npm start -prefix client' . You should now see our app up and running!
