@@ -32,6 +32,3 @@ return (
 export default NavBar;
 
 
-{/* <NavLink to="/add_pet" >Shop</NavLink>
-            <NavLink to="/sell" >Sell</NavLink>
-            <NavLink to="/cart" >Cart</NavLink> */}
