@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 
 import ipdb
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
 
 from flask import Flask, make_response, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
@@ -11,7 +15,8 @@ from flask_cors import CORS
 from models import db, Item, User, Order
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hotels.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://e_m_r:7UmayFygSc3pWDmmc6cvejmQgvE0GN8C@dpg-cl9vkbdo7jlc73fk5l80-a.ohio-postgres.render.com/ez_db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
 
