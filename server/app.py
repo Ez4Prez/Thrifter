@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-from flask import Flask, make_response, jsonify, request
+from flask import Flask, make_response, jsonify, request, session, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
@@ -14,8 +14,14 @@ from flask_cors import CORS
 
 from models import db, Item, User, Order
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://e_m_r:7UmayFygSc3pWDmmc6cvejmQgvE0GN8C@dpg-cl9vkbdo7jlc73fk5l80-a.ohio-postgres.render.com/ez_db'
+app = Flask(
+    __name__,
+    static_url_path='',
+    static_folder='../client/build',
+    template_folder='../client/build'
+)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://e_m_r:dMxZX0irr7ro846tYrpqbLOPI9uixx9z@dpg-clrj4kpjvg7s73eht6i0-a.ohio-postgres.render.com/thrifter'
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
@@ -25,6 +31,10 @@ migrate = Migrate(app, db)
 db.init_app(app)
 
 CORS(app)
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template("index.html")
 
 api = Api(app)
 
