@@ -11,4 +11,6 @@
 
 ## Setup
 
-To get started fork and clone this repository to your local machine. Then from your terminal navigate into the projects root directory and 'cd' into 'server' and run the following command: 'python app.py' . This should begin our server-side app. Now open up a separate terminal and from the projects root directory run the command: 'npm start -prefix client' . You should now see our app up and running!
+1. To get started fork and clone this repository to your local machine. 
+2. From your terminal navigate into the projects root directory and 'cd' into 'server' and run the following command: 'python app.py' . This should begin our server-side app. 
+3. Now open up a separate terminal and from the projects root directory run the command: 'npm start -prefix client' . You should now see our app up and running!
