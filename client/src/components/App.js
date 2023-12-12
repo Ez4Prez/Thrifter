@@ -22,7 +22,7 @@ const [formInput, setFormInput] = useState({
 
 
 useEffect(() => {
-  fetch("http://127.0.0.1:8000/items")
+  fetch("/items")
   .then(resp => resp.json())
   .then(itemsData => setItems(itemsData))
 },[])
@@ -30,7 +30,7 @@ useEffect(() => {
 
 function submitItem(event){
   event.preventDefault()
-  fetch("http://127.0.0.1:8000/items",{
+  fetch("/items",{
     method: "POST",
     headers: {
       "Content-Type": "application/json",
