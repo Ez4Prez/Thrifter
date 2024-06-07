@@ -59,8 +59,20 @@ img {
   gap: 20px;
   height: 30px;
   align-items: center;
-  padding-left: 20px;
+  justify-content: space-between;
 }
+
+.nav-links-group {
+  display: flex;
+  padding-left: 100px;
+  gap: 15px;
+}
+.searchbar {
+  display: flex;
+  align-items: left;
+
+}
+
 
 #search {
   width: 240px;
@@ -71,6 +83,8 @@ img {
   border: none;
   padding: 8px 20px;
   font-size: 16px;
+  margin-top: 1vw;
+  margin-right: 50px;
 }
 
 #search:focus {
@@ -244,8 +258,3 @@ margin-top: 9px;
   margin-top: 30vh;
 }
 
-#search {
-  margin-left: 65vw;
-  margin-top: 1vw;
-  
-}
